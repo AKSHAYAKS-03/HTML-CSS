@@ -1,0 +1,198 @@
+<!-- Create a single-page website using semantic HTML elements such as <header>, <nav>, <main>, and <footer>. -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>    
+        <title>Presidio</title>
+        <style>
+
+            body{
+                margin: 0;
+                background-color: rgb(255, 255, 255);
+                font-family: 'Times New Roman', Times, serif;
+                color:rgb(0, 0, 0);
+            }
+			nav a{
+                color : rgb(255, 255, 255);
+                margin: 5px;
+                text-decoration: none;
+            }
+            nav{
+                position: sticky;
+                top: 0;
+                padding: 20px;
+                background-color: rgb(0, 0, 0);
+                display: flex;
+                justify-content: center;
+                box-shadow: 0 4px 8px rgb(80, 82, 84);
+            }
+            main{                
+                padding: 20px;
+            }
+            h2{
+                margin-top: 0;
+            }
+            footer{
+                background-color: rgb(0, 0, 0);
+                padding: 10px;
+                color :#fff;
+                text-align: center;
+            }
+            .header-content{
+                text-align: center;
+                padding: 20px;
+                background-color: #fff;
+                color :rgb(54, 125, 201);
+            }
+           #courses{
+                padding: 20px;    
+                background-image:url('bg2.png');
+                background-size: contain;
+                box-shadow: 0 4px 8px rgb(154, 158, 162);
+                color:black;
+           }
+            #courses a{
+                color: rgb(0, 0, 0);
+                text-decoration:none;
+            }
+            #courses a:hover{
+                text-decoration: underline;
+            }
+            #skills{
+                background-image:url('bg.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+         
+            #skills li{
+                margin-bottom: 10px;
+                font-weight: bold;
+            }         
+            .card ul , .card ol{
+                padding-left: 20px;
+            }
+            #courses li{
+                margin-bottom: 20px;
+            }  
+            #contact{
+                padding: 50px;
+                color:black;
+                box-shadow: 0 4px 8px rgb(156, 159, 163);
+
+            } 
+          
+            #contact h2{
+                color:rgb(54, 125, 201);
+
+            }
+            .card{
+                background-color: rgb(255, 255, 255);
+                box-shadow: 0 4px 8px rgb(11, 48, 93);
+                padding: 20px;
+                margin: 20px auto;
+                color: #ffffff;
+                border-radius: 5px;
+                max-width: 900px;  
+              }
+             .card h3{
+                margin-top: 0;
+            }
+             .card p{
+                margin-bottom: 0;
+            }
+            @media (max-width: 600px) {
+                #courses, #skills {
+                    width: 90%;
+                }
+                nav{
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .card{
+                    margin: 10px;
+                    padding: 15px;
+                }
+                body{
+                    font-size: 14px;
+                }
+            
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <nav>
+                <a href="#home">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#contact">Contact</a>
+        </nav> 
+        <header>
+            <div class="header-content" id="home">
+                <h1>PRESIDIO</h1>
+                <h3>Self Learning - Batch 2026</h3>
+
+            </div>         
+        </header>
+
+        <main>
+            <div class="card" id="skills">
+                <h2>Technologies to Learn</h2>
+                <ol>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Git</li>
+                <li>Python</li>
+                <li>SQL</li>
+                <li>C#</li>
+                <li>AI</li>
+                <li>Cyber Security</li>
+                </ol>
+            </div>
+            <div class="card" id="courses">
+                <h2>Course recommendation</h2>
+                <b><ul>
+                    <li>
+                        <a href="https://www.udemy.com/course/the-complete-web-development-bootcamp">
+                        The Complete Web Development Bootcamp    https://www.udemy.com/course/the-complete-web-development-bootcamp
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.coursera.org/specializations/python">
+                        Python for Everybody    https://www.coursera.org/specializations/python
+                        </a>                    
+                    </li>
+                    <li>
+                        <a href="https://www.udemy.com/course/learn-c-sharp-programming-language/">
+                        Learn C# Programming Language    https://www.udemy.com/course/learn-c-sharp-programming-language/
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.udemy.com/course/the-complete-sql-bootcamp/">
+                        The Complete SQL Bootcamp    https://www.udemy.com/course/the-complete-sql
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.coursera.org/specializations/ai-for-everyone">
+                        AI For Everyone    https://www.coursera.org/specializations/ai-for-everyone
+                        </a>
+                    </li>
+
+                </ul></b>
+            </div>
+        </main>
+        <div id="contact">
+                <h2>Contact</h2>
+                <p><b>Email:</b> Presidio@gmail.com</p> 
+                <p><b>Phone:</b> +91 98765 43210</p>
+                <p><b>Location:</b> Chennai, India</p>
+                <p><b>Website:</b> www.presidio.com</p>
+        </div>
+        <footer>
+            <p>&copy; 2024 Presidio. All rights reserved.</p>
+        </footer>   
+       
+    </body>
+    
+</html>

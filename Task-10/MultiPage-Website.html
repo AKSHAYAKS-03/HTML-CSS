@@ -1,0 +1,150 @@
+<!-- **10. Interactive Multi-Page Website Simulator with CSS Only**
+
+- **Objective:** Create a fully functional, multi-section website that simulates the experience of navigating between different pages—all without any JavaScript.
+- **Requirements:**
+    - Use the `:target` pseudo-class to display and hide different “pages” or sections of content.
+    - Incorporate CSS animations and transitions to simulate page transitions (such as fading or sliding effects).
+    - Design an accessible navigation menu that works across different devices and screen sizes.
+    - Ensure that the entire experience is responsive and leverages advanced CSS techniques (e.g., combining Flexbox, Grid, and pseudo-classes) to manage layout and state transitions. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Multi Page Simulator</title>
+
+    <style>
+        body{
+            margin: 0;
+            
+            font-family: Arial;
+        }
+
+        nav{
+            display: flex;
+            justify-content: center;
+            background: #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a{
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+        }
+
+        nav a:hover{
+            background: #555;
+        }
+        .page{
+            scroll-margin-top: 60px;
+            display: none;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 900px;
+            padding: 20px;
+            opacity: 0;   
+            transition: opacity 0.5s ease;
+        }
+
+        .page:target{
+            display: grid;
+            opacity: 1;
+        }
+
+
+        .box-container{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .box{
+            background: lightgray;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+
+        }
+        .box:hover{            
+            transform: scale(1.05);
+        }
+
+        #home{ background: lightpink; }
+        #about{ background: lightblue; }
+        #services{ background: lightgreen; }
+        #contact{ background: lightyellow; }
+
+        @media(max-width:600px){
+            nav{
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .page{
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div id="home" class="page">
+        <div>
+            <h1>Home</h1>
+            <p>Welcome page</p>
+        </div>
+
+        <div class="box-container">
+            <div class="box">Box 1</div>
+            <div class="box">Box 2</div>
+        </div>
+    </div>
+
+    <div id="about" class="page">
+        <div>
+            <h1>About</h1>
+            <p>About content</p>
+        </div>
+
+        <div class="box-container">
+            <div class="box">Box 3</div>
+            <div class="box">Box 4</div>
+        </div>
+    </div>
+
+    <div id="services" class="page">
+        <div>
+            <h1>Services</h1>
+            <p>Services content</p>
+        </div>
+
+        <div class="box-container">
+            <div class="box">Box 5</div>
+            <div class="box">Box 6</div>
+        </div>
+    </div>
+
+    <div id="contact" class="page">
+        <div>
+            <h1>Contact</h1>
+            <p>Contact details</p>
+        </div>
+
+        <div class="box-container">
+            <div class="box">Box 7</div>
+            <div class="box">Box 8</div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!-- 6. **Tabbed Content Interface**
+    - **Objective:** Create a tabbed interface where clicking on a tab shows different content sections.
+    - **Requirements:**
+        - Utilize radio buttons or checkboxes (hidden from view) along with labels to serve as tabs.
+        - Use the `:checked` pseudo-class to display the corresponding content while hiding others.
+        - Incorporate smooth transitions when switching between tabs. -->        
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tabbed Content</title>
+        <style>
+            body{
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+             }   
+            .tabs{
+                margin: 20px;
+            }
+            input{
+                display: none;
+            }        
+            label{
+                padding: 10px 20px;
+                background-color: rgb(227, 227, 227);
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            img{
+                width: 500px;
+                height: 300px;
+                border-radius: 10px;
+            }           
+            .content div{
+                height: 0;
+                width: auto;
+                border-radius: 10px;
+                background-color: rgb(211, 208, 213);
+                overflow: hidden;
+                opacity: 0;
+                transition:0.4s ease;
+                color:black;
+                padding: 0;
+                text-align: center;
+            }
+            #tab1:checked ~ .content .content1,
+            #tab2:checked ~ .content .content2,
+            #tab3:checked ~ .content .content3{
+
+            opacity: 1;
+            padding: 20px;
+            height: auto;
+            }
+
+           
+        </style>
+    </head>
+    <body>
+        <h1>Tabbed Content</h1>
+        <input type="radio" id="tab1" name="tab" checked>
+        <input type="radio" id="tab2" name="tab">
+        <input type="radio" id="tab3" name="tab">
+
+        <div class="tabs">
+            <label for="tab1">Electronics</label>
+            <label for="tab2">Clothing</label>
+            <label for="tab3">Home Appliances</label>
+        </div>
+        <div class="content">
+            <div class="content1"><img src="ele.jpg" alt="Image"></div>
+            <div class="content2"><img src="clo.jpg" alt="Image"></div>
+            <div class="content3"><img src="home.jpg" alt="Image"></div>
+        </div>
+
+    </body> 
+</html>

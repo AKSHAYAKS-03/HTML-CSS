@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSS Infinite Slider</title>
+
+<style>
+
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+body{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    background:black;
+    color:white;
+    padding:20px;
+}
+
+/* HIDE RADIO */
+input{
+    display:none;
+}
+
+/* SLIDER */
+.slider{
+    width:90%;
+    max-width:700px;
+    overflow:hidden;
+}
+
+/* CONTAINER */
+.container{
+    overflow:hidden;
+    border-radius:10px;
+}
+
+/* TRACK */
+.content{
+    display:flex;
+    width:400%;   /* 4 slides (3 + duplicate) */
+    height:400px;
+    transition: transform 0.5s ease;
+}
+
+/* EACH SLIDE */
+.slide{
+    width:100%;
+    flex-shrink:0;
+}
+
+/* IMAGE */
+.slide img{
+    width:400px;
+    height:100%;
+    object-fit:cover;
+}
+
+/* AUTO MODE */
+#s0:checked ~ .slider .container .content{
+    animation: slide 12s infinite;
+}
+
+/* KEYFRAMES (SMOOTH LOOP) */
+@keyframes slide{
+
+    0%,20%{ transform:translateX(0); }
+
+    25%,45%{ transform:translateX(-100%); }
+
+    50%,70%{ transform:translateX(-200%); }
+
+    75%,95%{ transform:translateX(-300%); }
+
+    96%,100%{ transform:translateX(-300%); } /* freeze to hide reset */
+}
+
+/* MANUAL CONTROL */
+#s1:checked ~ .slider .container .content{
+    animation:none;
+    transform:translateX(0);
+}
+
+#s2:checked ~ .slider .container .content{
+    animation:none;
+    transform:translateX(-100%);
+}
+
+#s3:checked ~ .slider .container .content{
+    animation:none;
+    transform:translateX(-200%);
+}
+
+/* DOTS */
+.nav{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.nav label{
+    width:14px;
+    height:14px;
+    background:gray;
+    border-radius:50%;
+    cursor:pointer;
+    opacity:0.6;
+}
+
+/* ACTIVE DOT */
+#s0:checked ~ .slider .nav label[for="s0"],
+#s1:checked ~ .slider .nav label[for="s1"],
+#s2:checked ~ .slider .nav label[for="s2"],
+#s3:checked ~ .slider .nav label[for="s3"]{
+    background:red;
+    opacity:1;
+}
+
+/* PAUSE ON HOVER */
+.container:hover .content{
+    animation-play-state: paused;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+    .content{
+        height:250px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>CSS Slider</h1>
+
+<!-- RADIO BUTTONS -->
+<input type="radio" id="s0" name="slider" checked> <!-- AUTO -->
+<input type="radio" id="s1" name="slider">
+<input type="radio" id="s2" name="slider">
+<input type="radio" id="s3" name="slider">
+
+<div class="slider">
+
+    <div class="container">
+        <div class="content">
+
+            <div class="slide">
+                <img src="dhurandhar.jpg">
+            </div>
+
+            <div class="slide">
+                <img src="dhrshiyam.jpg">
+            </div>
+
+            <div class="slide">
+                <img src="karupu.jpg">
+            </div>
+
+            <!-- DUPLICATE FIRST SLIDE -->
+            <div class="slide">
+                <img src="dhurandhar.jpg">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- DOTS -->
+    <div class="nav">
+        <label for="s0" title="Auto"></label>
+        <label for="s1"></label>
+        <label for="s2"></label>
+        <label for="s3"></label>
+    </div>
+
+</div>
+
+</body>
+</html>

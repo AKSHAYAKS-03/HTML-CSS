@@ -1,0 +1,68 @@
+<!-- 2. **CSS Card Component with Hover Effects**
+    - **Objective:** Build a card that includes an image, a title, and a description.
+    - **Requirements:**
+        - Style the card with borders, shadows, and padding.
+        - Add a CSS hover effect (e.g., a background color change or slight scale transformation) with smooth transitions. -->
+<!DOCTYPE html>
+<html>
+    <title>Card</title>
+    <head>
+        <h3>Card Component with Hover Effects</h3>  
+        <style>
+            body{
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                background-image: url('bg.jpg');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-attachment: fixed;
+                color:aliceblue;
+
+            }
+            .card{                                    
+                border-radius: 15px;
+                background-color:rgba(126, 138, 142, 0.416);
+                padding: 10px;
+                width: 500px;
+                height:580px;
+                box-shadow: 0px 0px 5px rgba(113, 131, 137, 0.982), 0px 0px 20px 5px rgba(76, 96, 102, 0.982);
+                transition: all 0.3s ease;
+            }
+            .card:hover{
+                background-color: rgba(165, 183, 188, 0.416);
+                transform: scale(1.05);
+
+            }
+            .card img{
+                width: 60%;
+                height: 70%;
+                border-radius: 15px;
+            }
+            @media (max-width: 600px) {
+                .card{
+                    width: 90%;
+                    height: auto;
+                }
+                .card img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+           
+        
+
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h2>Jon Snow</h2>
+            <h3>The Rightful Heir To The Iron Throne</h3>
+            <img src="JS.jpg" alt="Image">
+            <p>Kill the boy, And let the <b>man</b> be born</p>            
+        </div>
+    </body>
+</html>

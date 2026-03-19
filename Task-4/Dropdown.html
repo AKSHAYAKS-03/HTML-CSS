@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dropdown</title>
+
+    <style>
+        body{
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: azure;
+        }
+        nav{
+            background-color: rgb(70, 120, 122);
+
+            width: 300px;
+            height: 100vh;
+        }
+        .menu{
+            list-style: none;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .menu li{
+            padding: 12px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .menu li:hover{
+            background-color: cadetblue;
+
+        }
+        .dropdown{
+            position: relative;
+        }
+
+        .submenu{
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            background-color: rgb(93, 147, 149);
+            list-style: none;
+            padding: 0;
+            min-width: 200px;
+        }
+
+        .submenu li{
+            padding: 10px;
+        }
+        .dropdown:hover .submenu{
+            display: block;
+        }
+        @media (max-width: 600px){
+            nav{
+                width: 100%;
+                height: auto;
+            }
+
+            .submenu{
+                position: static;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul class="menu">
+
+            <li>Home</li>
+
+            <li class="dropdown">
+                Services
+                <ul class="submenu">
+                    <li>Web Design</li>
+                    <li>App Development</li>
+                    <li>SEO</li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                Courses
+                <ul class="submenu">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </li>
+
+            <li>Contact</li>
+
+        </ul>
+    </nav>
+
+</body>
+</html>

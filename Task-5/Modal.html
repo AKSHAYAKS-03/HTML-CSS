@@ -1,0 +1,81 @@
+<!-- 5. **Modal Popup Using the `:target` or Checkbox Hack**
+    - **Objective:** Build a modal (popup window) that opens and closes without JavaScript.
+    - **Requirements:**
+        - Use an anchor link with an ID and the `:target` pseudo-class—or a hidden checkbox with the `:checked` pseudo-class—to control the modal’s visibility.
+        - Style the modal to appear centered with an overlay backdrop.
+        - Add CSS transitions for the modal’s appearance and disappearance.5. **Modal Popup Using the `:target` or Checkbox Hack**
+    - **Objective:** Build a modal (popup window) that opens and closes without JavaScript.
+    - **Requirements:**
+        - Use an anchor link with an ID and the `:target` pseudo-class—or a hidden checkbox with the `:checked` pseudo-class—to control the modal’s visibility.
+        - Style the modal to appear centered with an overlay backdrop.
+        - Add CSS transitions for the modal’s appearance and disappearance. -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Modal</title>
+        <style>
+            body{
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .modal{
+                visibility: hidden;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                opacity: 0;
+                transition: 0.3s ease;
+                
+            }
+            #myModal:target{
+                visibility: visible;
+                opacity: 1;
+            }         
+            #openModal, #closeModal{
+                text-decoration: none;
+                color: rgb(0, 0, 0);
+            }
+            #openModal:hover, #closeModal:hover{
+                text-decoration: underline;                
+            }
+            .links{
+                display: flex;
+                gap: 20px;
+                margin:10px;
+            }
+            .innerbox{
+                background-color: rgb(255, 255, 255);
+                padding: 50px;
+                border-radius: 10px;
+                text-align: center;
+                color: black;
+            }
+        
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Modal Popup</h1>
+        <div class="links">
+            <a href="#myModal" id="openModal">Open Modal</a>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="innerbox">
+                <h2>This is a Modal</h2>
+                <a href="#" id="closeModal">Close</a>
+            </div>
+        </div>
+
+    </body>
+</html>

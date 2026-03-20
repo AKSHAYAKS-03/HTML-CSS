@@ -32,7 +32,7 @@
             display: flex;
             width: 400%;
             height: 100%;
-            animation: autoSlide 16s infinite;
+            animation: autoslide 16s infinite;
         }
 
         .slide{
@@ -92,7 +92,7 @@
             transform: translateX(-300%);
         }
 
-        @keyframes autoSlide{
+        @keyframes autoslide{
             0%,20%{ transform: translateX(0); }
             25%,45%{ transform: translateX(-100%); }
             50%,70%{ transform: translateX(-200%); }
@@ -102,10 +102,6 @@
 
         .slides{
             transition: transform 0.6s ease;
-        }
-
-        .slider:hover .slides{
-            animation-play-state: paused;
         }
 
         </style>

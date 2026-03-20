@@ -4,80 +4,107 @@
         - Use the checkbox hack (a hidden checkbox input with a label) or the `:target` pseudo-class to control the open/closed state of each section.
         - Apply CSS transitions to animate the expansion and collapse of content areas.
         - Allow multiple sections to be open simultaneously (if desired) or restrict it to one open section at a time. -->
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Accordion Component</title>
-        <style>
+    <title>Accordion with Subsection</title>
 
-            body{
-                padding:20px;
-                display:flex;
-                flex-direction:column;
-                align-items:center;
-            }
+    <style>
 
-            input{
-                display:none;
-            }
+        body{
+            font-family: Arial;
+            padding:20px;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+        }
 
-            label{
-                display:block;
-                width:300px;
-                padding:15px;
-                background:#e3e3e3;
-                cursor:pointer;
-                border-radius:5px;
-                margin-top:10px;
-            }
+        input{
+            display:none;
+        }
 
-            .content{
-                max-height:0;
-                width:300px;
-                background:#d3d0d5;
-                overflow:hidden;
-                opacity:0;
-                padding:0 15px;
-                transition: all 0.4s ease;
-                color:black;
-                border-radius:5px;
-            }
+        label{
+            display:block;
+            width:300px;
+            padding:15px;
+            background:#e3e3e3;
+            cursor:pointer;
+            border-radius:5px;
+            margin-top:10px;
+        }
 
-            #section1:checked + label + .content,
-            #section2:checked + label + .content,
-            #section3:checked + label + .content{
-                max-height:200px;
-                padding:15px;
-                opacity:1;
-            }
+        .content , .sub-content{
+            max-height:0;
+            width:300px;
+            background:#d3d0d5;
+            overflow:hidden;
+            opacity:0;
+            padding:0 15px;
+            transition: all 0.4s ease;
+            border-radius:5px;
+        }
+
+        #sec1:checked + label + .content,
+        #sec2:checked + label + .content{
+            max-height:500px;
+            padding:15px;
+            opacity:1;
+        }
+
+        .sub-label{
+            background:#bcb8c0;
+            margin-top:10px;
+        }
+
+        .sub-content{
+            max-height:0;
+            overflow:hidden;
+            opacity:0;
+            padding:0 10px;
+            background:#e8e6eb;
+            transition:0.4s;
+        }
+
+        #sub1:checked + label + .sub-content,
+        #sub2:checked + label + .sub-content{
+            max-height:200px;
+            opacity:1;
+            padding:10px;
+        }
 
         </style>
     </head>
+
     <body>
 
-        <h1>Accordion Component</h1>
+    <h2>Accordion with Subsection</h2>
 
-        <div class="accordion">
+    <input type="checkbox" id="sec1">
+    <label for="sec1">Name</label>
+    <div class="content">
+        <p>Akshaya K S</p>
+    </div>
 
-            <input type="checkbox" id="section1">
-            <label for="section1">Name</label>
-            <div class="content">
-                <p>Akshaya K S</p>
-            </div>
+    <input type="checkbox" id="sec2">
+    <label for="sec2">Email</label>
 
-            <input type="checkbox" id="section2">
-            <label for="section2">Email</label>
-            <div class="content">
-                <p>akshaya@gmail.com</p>
-            </div>
+    <div class="content">
 
-            <input type="checkbox" id="section3">
-            <label for="section3">College</label>
-            <div class="content">
-                <p>Velammal College of Engineering</p>
-            </div>
-
+        <input type="checkbox" id="sub1">
+        <label for="sub1" class="sub-label">Personal Email</label>
+        <div class="sub-content">
+            <p>akshaya@gmail.com</p>
         </div>
+
+        <input type="checkbox" id="sub2">
+        <label for="sub2" class="sub-label">Work Email</label>
+        <div class="sub-content">
+            <p>akshaya@company.com</p>
+        </div>
+
+    </div>
 
     </body>
 </html>

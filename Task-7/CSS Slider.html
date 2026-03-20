@@ -1,186 +1,148 @@
+<!-- 7. **Pure CSS Carousel/Slider**
+    - **Objective:** Develop an image carousel that cycles through slides automatically and/or manually.
+    - **Requirements:**
+        - Use CSS animations (`@keyframes`) to create an auto-sliding effect.
+        - Implement manual slide selection using the `:checked` pseudo-class with hidden radio buttons or the `:target` pseudo-class.
+        - Ensure that the slider is responsive and visually engaging. -->
+
 <!DOCTYPE html>
 <html>
-<head>
-<title>CSS Infinite Slider</title>
+    <head>
+    <title>Pure CSS Slider</title>
 
-<style>
+        <style>
 
-/* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+        body{
+            margin:0;
+            font-family: Arial;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* BODY */
-body{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    background:black;
-    color:white;
-    padding:20px;
-}
+        .slider{
+            width: 60%;
+            height: 400px;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
 
-/* HIDE RADIO */
-input{
-    display:none;
-}
+        .slides{
+            display: flex;
+            width: 400%;
+            height: 100%;
+            animation: autoSlide 16s infinite;
+        }
 
-/* SLIDER */
-.slider{
-    width:90%;
-    max-width:700px;
-    overflow:hidden;
-}
+        .slide{
+            width: 100%;
+            flex-shrink: 0;
+        }
 
-/* CONTAINER */
-.container{
-    overflow:hidden;
-    border-radius:10px;
-}
+        .slide img{
+            width: 60%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-/* TRACK */
-.content{
-    display:flex;
-    width:400%;   /* 4 slides (3 + duplicate) */
-    height:400px;
-    transition: transform 0.5s ease;
-}
+        input{
+            display: none;
+        }
 
-/* EACH SLIDE */
-.slide{
-    width:100%;
-    flex-shrink:0;
-}
+        .navigation{
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
 
-/* IMAGE */
-.slide img{
-    width:400px;
-    height:100%;
-    object-fit:cover;
-}
+        .navigation label{
+            width: 15px;
+            height: 15px;
+            border: 2px solid white;
+            border-radius: 50%;
+            margin: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
 
-/* AUTO MODE */
-#s0:checked ~ .slider .container .content{
-    animation: slide 12s infinite;
-}
+        .navigation label:hover{
+            background: white;
+        }
 
-/* KEYFRAMES (SMOOTH LOOP) */
-@keyframes slide{
+        #slide1:checked ~ .slides{
+            animation: none;
+            transform: translateX(0);
+        }
 
-    0%,20%{ transform:translateX(0); }
+        #slide2:checked ~ .slides{
+            animation: none;
+            transform: translateX(-100%);
+        }
 
-    25%,45%{ transform:translateX(-100%); }
+        #slide3:checked ~ .slides{
+            animation: none;
+            transform: translateX(-200%);
+        }
 
-    50%,70%{ transform:translateX(-200%); }
+        #slide4:checked ~ .slides{
+            animation: none;
+            transform: translateX(-300%);
+        }
 
-    75%,95%{ transform:translateX(-300%); }
+        @keyframes autoSlide{
+            0%,20%{ transform: translateX(0); }
+            25%,45%{ transform: translateX(-100%); }
+            50%,70%{ transform: translateX(-200%); }
+            75%,95%{ transform: translateX(-300%); }
+            100%{ transform: translateX(0); }
+        }
 
-    96%,100%{ transform:translateX(-300%); } /* freeze to hide reset */
-}
+        .slides{
+            transition: transform 0.6s ease;
+        }
 
-/* MANUAL CONTROL */
-#s1:checked ~ .slider .container .content{
-    animation:none;
-    transform:translateX(0);
-}
+        .slider:hover .slides{
+            animation-play-state: paused;
+        }
 
-#s2:checked ~ .slider .container .content{
-    animation:none;
-    transform:translateX(-100%);
-}
+        </style>
+    </head>
 
-#s3:checked ~ .slider .container .content{
-    animation:none;
-    transform:translateX(-200%);
-}
+    <body>
+    <h1>Pure CSS Slider</h1>
+        <div class="slider">
 
-/* DOTS */
-.nav{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin-top:10px;
-}
+            <input type="radio" name="slider" id="slide1">
+            <input type="radio" name="slider" id="slide2">
+            <input type="radio" name="slider" id="slide3">
+            <input type="radio" name="slider" id="slide4">
 
-.nav label{
-    width:14px;
-    height:14px;
-    background:gray;
-    border-radius:50%;
-    cursor:pointer;
-    opacity:0.6;
-}
-
-/* ACTIVE DOT */
-#s0:checked ~ .slider .nav label[for="s0"],
-#s1:checked ~ .slider .nav label[for="s1"],
-#s2:checked ~ .slider .nav label[for="s2"],
-#s3:checked ~ .slider .nav label[for="s3"]{
-    background:red;
-    opacity:1;
-}
-
-/* PAUSE ON HOVER */
-.container:hover .content{
-    animation-play-state: paused;
-}
-
-/* RESPONSIVE */
-@media(max-width:600px){
-    .content{
-        height:250px;
-    }
-}
-
-</style>
-</head>
-
-<body>
-
-<h1>CSS Slider</h1>
-
-<!-- RADIO BUTTONS -->
-<input type="radio" id="s0" name="slider" checked> <!-- AUTO -->
-<input type="radio" id="s1" name="slider">
-<input type="radio" id="s2" name="slider">
-<input type="radio" id="s3" name="slider">
-
-<div class="slider">
-
-    <div class="container">
-        <div class="content">
-
-            <div class="slide">
-                <img src="dhurandhar.jpg">
+            <div class="slides">
+                <div class="slide">
+                    <img src="img1.jpg">
+                </div>
+                <div class="slide">
+                    <img src="img2.jpg">
+                </div>
+                <div class="slide">
+                    <img src="img3.jpg">
+                </div>
+                <div class="slide">
+                    <img src="img4.jpg">
+                </div>
             </div>
 
-            <div class="slide">
-                <img src="dhrshiyam.jpg">
-            </div>
-
-            <div class="slide">
-                <img src="karupu.jpg">
-            </div>
-
-            <!-- DUPLICATE FIRST SLIDE -->
-            <div class="slide">
-                <img src="dhurandhar.jpg">
+            <div class="navigation">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+                <label for="slide4"></label>
             </div>
 
         </div>
-    </div>
 
-    <!-- DOTS -->
-    <div class="nav">
-        <label for="s0" title="Auto"></label>
-        <label for="s1"></label>
-        <label for="s2"></label>
-        <label for="s3"></label>
-    </div>
-
-</div>
-
-</body>
+    </body>
 </html>
